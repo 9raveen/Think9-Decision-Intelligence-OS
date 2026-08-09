@@ -1,0 +1,478 @@
+[
+  {
+    "decision_id": "D01",
+    "brand": "Nova",
+    "function": "procurement",
+    "date": "2025-06-10",
+    "problem": "Nova needed a packaging supplier for a new moisturizer line (250ml PET jars, 40K unit initial run).",
+    "options_considered": [
+      "Supplier Alpha (PET packaging)",
+      "Coastal Pack Co. (regional, untracked vendor)"
+    ],
+    "decision_made": "Selected Supplier Alpha",
+    "reason": "Alpha offered 9% lower unit cost and a shorter quoted lead time (18 days vs 26 days) at the required MOQ.",
+    "evidence_doc_ids": ["E01", "E02"],
+    "owner": "Nova Procurement Lead",
+    "outcome": "Order placed; onboarding completed without issue.",
+    "tags": [
+      "supplier:alpha",
+      "brand:nova",
+      "category:personal_care",
+      "packaging",
+      "sourcing_decision"
+    ],
+    "product_or_category": "250ml PET moisturizer jars",
+    "scope": "brand_specific",
+    "review_required": false,
+    "product_line": "PET_packaging"
+  },
+  {
+    "decision_id": "D02",
+    "brand": "Nova",
+    "function": "procurement",
+    "date": "2025-09-02",
+    "problem": "First scheduled delivery from Supplier Alpha for the moisturizer line arrived late.",
+    "options_considered": [
+      "Accept delay and adjust production schedule",
+      "Escalate to supplier account manager"
+    ],
+    "decision_made": "Escalated to Alpha account manager; production schedule shifted by 12 days.",
+    "reason": "Delay of 12 days against the confirmed delivery window caused a near-stockout on retail shelves for two SKUs.",
+    "evidence_doc_ids": ["E03", "E04"],
+    "owner": "Nova Supply Chain Manager",
+    "outcome": "Alpha attributed the delay to a raw material shortage on their end; committed to improved scheduling going forward.",
+    "tags": [
+      "supplier:alpha",
+      "brand:nova",
+      "category:personal_care",
+      "delivery_delay",
+      "incident"
+    ],
+    "product_or_category": "250ml PET moisturizer jars",
+    "scope": "brand_specific",
+    "review_required": false,
+    "product_line": "PET_packaging"
+  },
+  {
+    "decision_id": "D03",
+    "brand": "Nova",
+    "function": "procurement",
+    "date": "2025-10-20",
+    "problem": "A second Alpha delivery for Nova's moisturizer line arrived 18 days late, this time without advance notice.",
+    "options_considered": [
+      "Request formal remediation plan from Alpha",
+      "Begin sourcing an alternate vendor in parallel"
+    ],
+    "decision_made": "Requested formal remediation plan and began parallel sourcing conversations as a contingency.",
+    "reason": "Two delays within four months, the second unannounced, was treated as a pattern rather than a one-off.",
+    "evidence_doc_ids": ["E05", "E06"],
+    "owner": "Nova Supply Chain Manager",
+    "outcome": "Alpha proposed a revised production slot and a dedicated line, but could not commit to a firm delivery guarantee.",
+    "tags": [
+      "supplier:alpha",
+      "brand:nova",
+      "category:personal_care",
+      "delivery_delay",
+      "remediation",
+      "incident"
+    ],
+    "product_or_category": "250ml PET moisturizer jars",
+    "scope": "brand_specific",
+    "review_required": true,
+    "product_line": "PET_packaging"
+  },
+  {
+    "decision_id": "D04",
+    "brand": "Nova",
+    "function": "procurement",
+    "date": "2025-11-15",
+    "problem": "Alpha's remediation plan did not include a firm delivery guarantee ahead of Nova's Q1 restock cycle.",
+    "options_considered": [
+      "Continue with Alpha on a probationary basis",
+      "Switch to Coastal Pack Co. for the moisturizer line"
+    ],
+    "decision_made": "Switched packaging for the moisturizer line to Coastal Pack Co.",
+    "reason": "Restock timing was considered too critical to risk a third delay; Coastal Pack Co. offered a shorter, more predictable lead time despite a ~6% higher unit cost.",
+    "evidence_doc_ids": ["E06", "E07"],
+    "owner": "Nova Supply Chain Manager",
+    "outcome": "Transition completed over 5 weeks; no further delivery issues reported for this SKU line since the switch.",
+    "tags": [
+      "supplier:alpha",
+      "brand:nova",
+      "category:personal_care",
+      "supplier_switch",
+      "resolution"
+    ],
+    "product_or_category": "250ml PET moisturizer jars",
+    "scope": "brand_specific",
+    "review_required": true,
+    "product_line": "PET_packaging",
+    "preceding_decision_id": "D03"
+  },
+  {
+    "decision_id": "D05",
+    "brand": "Verve",
+    "function": "legal",
+    "date": "2025-12-01",
+    "problem": "Verve's marketing team proposed the label claim 'clinically proven to boost immunity' for a new wellness drink SKU.",
+    "options_considered": [
+      "Approve claim as written",
+      "Require clinical substantiation before approval",
+      "Revise claim language"
+    ],
+    "decision_made": "Rejected the claim as written; approved revised language 'formulated with immunity-supporting ingredients.'",
+    "reason": "No clinical trial data existed to support 'clinically proven'; the claim carried regulatory risk under advertising standards.",
+    "evidence_doc_ids": ["E08", "E09"],
+    "owner": "Think9 Legal & Compliance",
+    "outcome": "Revised copy approved and used on final packaging; no regulatory issues raised post-launch.",
+    "tags": [
+      "brand:verve",
+      "category:food_beverage",
+      "legal_claim",
+      "clinically_proven",
+      "labeling"
+    ],
+    "product_or_category": "wellness drink label claim",
+    "scope": "brand_specific",
+    "review_required": true
+  },
+  {
+    "decision_id": "D06",
+    "brand": "Lumen",
+    "function": "product",
+    "date": "2026-01-10",
+    "problem": "Lumen planned the go-to-market approach for a new premium diffuser line.",
+    "options_considered": [
+      "Digital-only launch via influencer partnerships",
+      "Hybrid launch (digital + select retail partners)",
+      "Retail-first launch with digital as secondary support"
+    ],
+    "decision_made": "Digital-only launch via influencer partnerships, no retail distribution in phase 1.",
+    "reason": "Lower upfront cost, faster time-to-market, and the product's premium positioning was assessed to fit a digital-savvy early-adopter audience; retail listing fees and lead time were seen as slowing launch speed.",
+    "evidence_doc_ids": ["E10", "E11"],
+    "owner": "Lumen Brand Lead",
+    "outcome": "Launched February 2026; see D07 for post-launch retrospective.",
+    "tags": [
+      "brand:lumen",
+      "category:home_wellness",
+      "launch_strategy",
+      "digital_only",
+      "channel_strategy"
+    ],
+    "product_or_category": "premium diffuser line launch channel",
+    "scope": "brand_specific",
+    "review_required": true
+  },
+  {
+    "decision_id": "D07",
+    "brand": "Lumen",
+    "function": "product",
+    "date": "2026-05-08",
+    "problem": "90-day retrospective on the diffuser line's digital-only launch, against original forecast.",
+    "options_considered": [
+      "Continue digital-only and extend influencer spend",
+      "Add limited retail distribution",
+      "Discontinue the line"
+    ],
+    "decision_made": "Added limited retail distribution for the line starting month 4; retained digital as primary channel.",
+    "reason": "60-day sales reached 61% of forecast; 90-day sales reached 68% of forecast. Awareness surveys showed strong recognition within existing digital-savvy segments but minimal penetration outside them. Reorder rate was 22% versus a projected 35%, attributed partly to lack of in-store discovery and trial.",
+    "evidence_doc_ids": ["E12", "E13"],
+    "owner": "Lumen Brand Lead",
+    "outcome": "Retail addition improved awareness metrics over the following quarter; retrospective lesson documented for future launches: digital-only channel concentration limits reach beyond the existing digital audience and slows trial-driven reorder for premium home goods.",
+    "tags": [
+      "brand:lumen",
+      "category:home_wellness",
+      "launch_retrospective",
+      "digital_only",
+      "channel_strategy",
+      "lesson_learned"
+    ],
+    "product_or_category": "premium diffuser line launch channel",
+    "scope": "brand_specific",
+    "review_required": true
+  },
+  {
+    "decision_id": "D08",
+    "brand": "Kindle",
+    "function": "procurement",
+    "date": "2026-02-14",
+    "problem": "Kindle needed flexible packaging (foil pouches) for a new snack SKU line.",
+    "options_considered": ["Supplier Alpha", "Coastal Pack Co."],
+    "decision_made": "Selected Supplier Alpha.",
+    "reason": "Alpha's flexible packaging line (distinct production line from bottle/jar packaging) had strong on-time performance for Kindle's product category and volume tier.",
+    "evidence_doc_ids": ["E14"],
+    "owner": "Kindle Procurement Lead",
+    "outcome": "Three delivery cycles completed on schedule; no issues reported to date.",
+    "tags": [
+      "supplier:alpha",
+      "brand:kindle",
+      "category:packaged_foods",
+      "sourcing_decision",
+      "packaging"
+    ],
+    "product_or_category": "flexible foil pouch packaging",
+    "scope": "brand_specific",
+    "review_required": false,
+    "product_line": "flexible_packaging"
+  },
+  {
+    "decision_id": "D09",
+    "brand": "Kindle",
+    "function": "procurement",
+    "date": "2025-11-05",
+    "problem": "Kindle needed a raw ingredient supplier for a new protein bar's whey protein isolate component.",
+    "options_considered": [
+      "Supplier Beta",
+      "existing incumbent ingredient vendor"
+    ],
+    "decision_made": "Selected Supplier Beta.",
+    "reason": "Beta offered competitive pricing at volume and a documented quality certification for the specific ingredient grade required.",
+    "evidence_doc_ids": ["E15", "E16"],
+    "owner": "Kindle Procurement Lead",
+    "outcome": "Consistent quality and on-time delivery across four sourcing cycles; relationship considered stable.",
+    "tags": [
+      "supplier:beta",
+      "brand:kindle",
+      "category:packaged_foods",
+      "sourcing_decision",
+      "ingredients"
+    ],
+    "product_or_category": "whey protein isolate ingredient",
+    "scope": "brand_specific",
+    "review_required": false
+  },
+  {
+    "decision_id": "D10",
+    "brand": "Verve",
+    "function": "quality",
+    "date": "2026-04-18",
+    "problem": "A batch of Verve's wellness drink sourced from Supplier Beta triggered an internal quality hold pending investigation of a possible contamination signal in a probiotic ingredient.",
+    "options_considered": [
+      "Full batch recall",
+      "Quarantine and targeted retesting",
+      "Release with enhanced monitoring"
+    ],
+    "decision_made": "Quarantined the affected batch and conducted targeted retesting; no recall issued.",
+    "reason": "Retesting on a statistically representative sample did not confirm contamination beyond acceptable thresholds, but the source batch could not be fully cleared with high confidence given testing limitations, and the affected units were destroyed as a precaution.",
+    "evidence_doc_ids": ["E17", "E18"],
+    "owner": "Verve Quality Assurance Lead",
+    "outcome": "No confirmed contamination in retested samples; Beta relationship continued with additional incoming QA checks added for this ingredient category specifically.",
+    "tags": [
+      "supplier:beta",
+      "brand:verve",
+      "category:food_beverage",
+      "quality_incident",
+      "ingredients"
+    ],
+    "product_or_category": "probiotic ingredient - wellness drink",
+    "scope": "portfolio_relevant",
+    "review_required": true
+  },
+  {
+    "decision_id": "D11",
+    "brand": "Nova",
+    "function": "operations",
+    "date": "2026-01-25",
+    "problem": "Supplier Gamma, Nova's co-packing partner for a seasonal gift-set SKU, signaled a capacity constraint ahead of the holiday production window.",
+    "options_considered": [
+      "Wait for Gamma's existing line to free up",
+      "Request Gamma add a secondary production line",
+      "Source a second co-packer for overflow volume"
+    ],
+    "decision_made": "Requested Gamma add a secondary production line for the season.",
+    "reason": "Gamma had sufficient facility capacity to add a line with two weeks' notice, avoiding the cost and onboarding time of a new co-packer relationship.",
+    "evidence_doc_ids": ["E19"],
+    "owner": "Nova Operations Manager",
+    "outcome": "Secondary line added on schedule; seasonal volume produced without delay.",
+    "tags": [
+      "supplier:gamma",
+      "brand:nova",
+      "category:personal_care",
+      "capacity_constraint",
+      "resolution"
+    ],
+    "product_or_category": "seasonal gift-set co-packing capacity",
+    "scope": "brand_specific",
+    "review_required": false
+  },
+  {
+    "decision_id": "D12",
+    "brand": "Aura",
+    "function": "procurement",
+    "date": "2026-03-11",
+    "problem": "Aura's existing service-level agreement with Supplier Gamma for contract manufacturing was up for renewal, with Gamma proposing a revised minimum order commitment.",
+    "options_considered": [
+      "Accept revised MOQ terms",
+      "Negotiate a lower MOQ threshold",
+      "Explore alternate co-packer"
+    ],
+    "decision_made": "Negotiated a lower MOQ threshold with a modest per-unit price increase.",
+    "reason": "Aura's SKU velocity did not support the originally proposed MOQ without excess inventory risk.",
+    "evidence_doc_ids": ["E20"],
+    "owner": "Aura Procurement Lead",
+    "outcome": "Revised terms signed; relationship continued without disruption.",
+    "tags": [
+      "supplier:gamma",
+      "brand:aura",
+      "category:personal_care",
+      "contract_renewal",
+      "resolution"
+    ],
+    "product_or_category": "contract manufacturing MOQ terms",
+    "scope": "brand_specific",
+    "review_required": false
+  },
+  {
+    "decision_id": "D13",
+    "brand": "Aura",
+    "function": "procurement",
+    "date": "2026-02-02",
+    "problem": "Aura sought a lower unit cost from Supplier Beta for a shared raw ingredient used across two SKUs.",
+    "options_considered": [
+      "Accept current pricing",
+      "Negotiate volume-based discount"
+    ],
+    "decision_made": "Negotiated a 6% volume-based discount by combining forecasted demand across the two SKUs.",
+    "reason": "Beta offered tiered pricing once combined forecasted volume crossed a threshold.",
+    "evidence_doc_ids": ["E21"],
+    "owner": "Aura Procurement Lead",
+    "outcome": "Discount applied to subsequent purchase orders; no quality or delivery issues reported.",
+    "tags": [
+      "supplier:beta",
+      "brand:aura",
+      "category:personal_care",
+      "cost_negotiation",
+      "resolution"
+    ],
+    "product_or_category": "shared raw ingredient pricing",
+    "scope": "brand_specific",
+    "review_required": false
+  },
+  {
+    "decision_id": "D14",
+    "brand": "Verve",
+    "function": "procurement",
+    "date": "2025-08-19",
+    "problem": "Verve needed a glass bottle supplier for a premium cold-pressed juice line.",
+    "options_considered": ["Supplier Alpha", "existing glass packaging vendor"],
+    "decision_made": "Selected Supplier Alpha.",
+    "reason": "Alpha's glass packaging division (separate from its PET line) quoted competitive pricing and had prior experience with premium beverage clients.",
+    "evidence_doc_ids": ["E22"],
+    "owner": "Verve Procurement Lead",
+    "outcome": "Deliveries on schedule across five production cycles; no issues reported.",
+    "tags": [
+      "supplier:alpha",
+      "brand:verve",
+      "category:food_beverage",
+      "sourcing_decision",
+      "packaging"
+    ],
+    "product_or_category": "glass bottle packaging - cold-pressed juice",
+    "scope": "brand_specific",
+    "review_required": false,
+    "product_line": "glass_packaging"
+  },
+  {
+    "decision_id": "D15",
+    "brand": "Kindle",
+    "function": "legal",
+    "date": "2026-03-22",
+    "problem": "Kindle's marketing team proposed the claim 'high in protein' for a new snack bar SKU.",
+    "options_considered": [
+      "Approve claim as written pending lab verification",
+      "Reject pending further review"
+    ],
+    "decision_made": "Approved the claim following lab verification confirming protein content met the regulatory threshold for 'high in protein' labeling.",
+    "reason": "Lab results were provided and met the applicable regulatory definition, unlike unsubstantiated efficacy claims.",
+    "evidence_doc_ids": ["E23"],
+    "owner": "Think9 Legal & Compliance",
+    "outcome": "Claim used on final packaging; no issues raised post-launch.",
+    "tags": [
+      "brand:kindle",
+      "category:packaged_foods",
+      "legal_claim",
+      "labeling",
+      "resolution"
+    ],
+    "product_or_category": "snack bar protein claim",
+    "scope": "brand_specific",
+    "review_required": true
+  },
+  {
+    "decision_id": "D16",
+    "brand": "Nova",
+    "function": "product",
+    "date": "2025-07-30",
+    "problem": "Nova evaluated expanding an existing skincare SKU line into additional regional retail chains.",
+    "options_considered": [
+      "Expand to 2 additional regional chains",
+      "Hold current retail footprint and focus on e-commerce growth"
+    ],
+    "decision_made": "Expanded to 2 additional regional retail chains.",
+    "reason": "Existing retail presence showed strong sell-through rates, and the SKU line already had established brand awareness in-region.",
+    "evidence_doc_ids": ["E24"],
+    "owner": "Nova Brand Lead",
+    "outcome": "Sell-through in new chains met forecast within the first quarter.",
+    "tags": [
+      "brand:nova",
+      "category:personal_care",
+      "channel_strategy",
+      "retail_expansion",
+      "resolution"
+    ],
+    "product_or_category": "regional retail channel expansion",
+    "scope": "brand_specific",
+    "review_required": false
+  },
+  {
+    "decision_id": "D17",
+    "brand": "Lumen",
+    "function": "procurement",
+    "date": "2025-05-12",
+    "problem": "Lumen needed a glass jar supplier for its core scented candle line.",
+    "options_considered": ["Supplier Alpha", "incumbent glass vendor"],
+    "decision_made": "Selected Supplier Alpha.",
+    "reason": "Alpha's glass division offered a design customization option the incumbent vendor could not match within the required timeline.",
+    "evidence_doc_ids": ["E25"],
+    "owner": "Lumen Procurement Lead",
+    "outcome": "Deliveries on schedule across all cycles to date; no issues reported.",
+    "tags": [
+      "supplier:alpha",
+      "brand:lumen",
+      "category:home_wellness",
+      "sourcing_decision",
+      "packaging"
+    ],
+    "product_or_category": "glass jar packaging - candle line",
+    "scope": "brand_specific",
+    "review_required": false,
+    "product_line": "glass_packaging"
+  },
+  {
+    "decision_id": "D18",
+    "brand": "Kindle",
+    "function": "operations",
+    "date": "2026-04-02",
+    "problem": "Supplier Gamma's co-packing ramp-up for a new Kindle snack SKU fell behind the agreed onboarding schedule by 9 days.",
+    "options_considered": [
+      "Extend timeline and continue with Gamma",
+      "Escalate for expedited resourcing",
+      "Pause launch and reassess"
+    ],
+    "decision_made": "Escalated for expedited resourcing; timeline extended by 9 days.",
+    "reason": "Gamma attributed the delay to onboarding a new production line for the SKU's format; no prior performance issues existed with Gamma for Kindle.",
+    "evidence_doc_ids": ["E26"],
+    "owner": "Kindle Operations Manager",
+    "outcome": "Line completed onboarding 9 days behind original schedule; launch date shifted accordingly; no further delays since.",
+    "tags": [
+      "supplier:gamma",
+      "brand:kindle",
+      "category:packaged_foods",
+      "ramp_up_delay",
+      "resolution"
+    ],
+    "product_or_category": "co-packing ramp-up - new snack format",
+    "scope": "brand_specific",
+    "review_required": false
+  }
+]

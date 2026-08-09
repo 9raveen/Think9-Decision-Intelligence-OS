@@ -1,0 +1,81 @@
+[
+  {
+    "query_id": "Q1",
+    "type": "cross_brand_precedent",
+    "brand": "Aura",
+    "query_text": "We're evaluating Supplier Alpha for packaging on a new sunscreen SKU. What should we know?",
+    "expected_precedent_decision_ids": ["D01", "D02", "D03", "D04"],
+    "expected_context_decision_ids": ["D08", "D14", "D17"],
+    "expected_evidence_doc_ids": ["E03", "E04", "E05", "E06", "E07"],
+    "expected_reasoning": "Nova experienced two delivery delays with Alpha on PET jar packaging within a 4-month window (12 days, then 18 days with no advance notice), leading Nova to switch suppliers after Alpha could not commit to a firm delivery guarantee. However, Alpha has performed reliably for Kindle (flexible packaging), Verve (glass bottles), and Lumen (glass jars) - the pattern appears specific to Alpha's PET/bottle-jar production line and volume tier used for Nova's SKU, not a blanket reliability issue across Alpha's business.",
+    "expected_outcome": "Surface the Nova precedent as a caution specific to PET packaging at similar volume, note the contrasting positive history on other Alpha product lines, and recommend validating Alpha's current PET line capacity and lead-time commitment in writing before proceeding. Flag for human review given the direct product-line overlap with Nova's case.",
+    "correct_behavior": "surface_precedent_with_nuance"
+  },
+  {
+    "query_id": "Q2",
+    "type": "cross_brand_precedent",
+    "brand": "Kindle",
+    "query_text": "Drafting packaging copy for a new protein bar: 'clinically proven to aid muscle recovery.' Any concerns before we send to legal?",
+    "expected_precedent_decision_ids": ["D05"],
+    "expected_context_decision_ids": ["D15"],
+    "expected_evidence_doc_ids": ["E08", "E09", "E28"],
+    "expected_reasoning": "Verve previously proposed a 'clinically proven' claim without trial data on file and it was rejected in favor of ingredient-based framing. The Brand Claims Playbook requires documented substantiation on file for 'clinically proven' language specifically. This is the same claim pattern (clinically proven, no stated trial basis) applied to a different brand and category.",
+    "expected_outcome": "Flag the claim as likely to be rejected absent clinical trial documentation; recommend either securing substantiation or shifting to ingredient/formulation-based language, consistent with the approved Verve precedent and the Claims Playbook. Contrast with Kindle's own prior 'high in protein' claim, which was approved because lab verification existed.",
+    "correct_behavior": "surface_precedent_with_nuance"
+  },
+  {
+    "query_id": "Q3",
+    "type": "cross_brand_precedent",
+    "brand": "Verve",
+    "query_text": "Planning a digital-only, influencer-led launch for a new health drink, no retail distribution in phase 1. Anything we should consider?",
+    "expected_precedent_decision_ids": ["D06", "D07"],
+    "expected_evidence_doc_ids": ["E10", "E11", "E12", "E13"],
+    "expected_reasoning": "Lumen ran a digital-only, influencer-led launch for its diffuser line under a similar rationale (lower cost, faster time-to-market). At 60 and 90 days it reached only 61% and 68% of forecast respectively, with strong awareness inside its existing digital-reachable audience (41% aided recall) but near-zero awareness outside it (6%), and reorder rate came in well below projection (22% vs 35%), attributed to lack of physical/in-store trial. Lumen's own retrospective explicitly documents channel concentration risk as the lesson.",
+    "expected_outcome": "Recommend against a fully digital-only phase 1 for a category where in-person trial or broader discovery may matter; suggest at minimum a phased retail add-on planned in advance rather than reactively, or a limited retail test alongside the digital launch, and set awareness/reorder benchmarks against Lumen's actuals rather than only against Verve's own forecast.",
+    "correct_behavior": "surface_precedent_with_nuance"
+  },
+  {
+    "query_id": "Q4",
+    "type": "no_precedent",
+    "brand": "Nova",
+    "query_text": "Should we use Supplier Gamma for a new eco-friendly packaging line requiring biodegradable materials?",
+    "expected_precedent_decision_ids": [],
+    "expected_evidence_doc_ids": [],
+    "expected_reasoning": "No decision record covers Gamma providing packaging materials (Gamma's history in the corpus is exclusively contract manufacturing/co-packing capacity, not materials sourcing), and no record covers biodegradable or eco-friendly packaging materials for any brand or supplier.",
+    "expected_outcome": "No sufficiently relevant precedent found. Recommend proceeding with standard supplier due diligence and treating this as a new sourcing category for Think9 rather than forcing a match to an unrelated Gamma record.",
+    "correct_behavior": "no_precedent_found"
+  },
+  {
+    "query_id": "Q5",
+    "type": "no_precedent",
+    "brand": "Kindle",
+    "query_text": "Has Think9 previously priced any products under a subscription or recurring-purchase model?",
+    "expected_precedent_decision_ids": [],
+    "expected_evidence_doc_ids": [],
+    "expected_reasoning": "No decision record in the corpus addresses pricing models, subscriptions, or recurring purchase mechanics for any brand.",
+    "expected_outcome": "No relevant precedent found; this is outside the scope of decisions currently on record.",
+    "correct_behavior": "no_precedent_found"
+  },
+  {
+    "query_id": "Q6",
+    "type": "no_precedent",
+    "brand": "Lumen",
+    "query_text": "Should Lumen expand into a fragrance-free product category?",
+    "expected_precedent_decision_ids": [],
+    "expected_evidence_doc_ids": [],
+    "expected_reasoning": "No decision record addresses category expansion decisions of this kind for Lumen or any other brand; the closest records (D16, D06/D07) concern retail channel expansion and launch channel strategy, not product category expansion, and should not be forced into relevance.",
+    "expected_outcome": "No sufficiently relevant precedent found. Note the closest tangential records (channel-strategy decisions) but state explicitly they do not address category expansion, rather than presenting them as a match.",
+    "correct_behavior": "no_precedent_found"
+  },
+  {
+    "query_id": "Q7",
+    "type": "conflicting_precedent",
+    "brand": "Verve",
+    "query_text": "Should Verve continue sourcing key ingredients from Supplier Beta, and should other brands be cautious about Beta?",
+    "expected_precedent_decision_ids": ["D09", "D10"],
+    "expected_evidence_doc_ids": ["E15", "E16", "E17", "E18"],
+    "expected_reasoning": "Kindle has a consistently positive history with Beta (whey protein isolate, 4 clean delivery cycles, documented quality certification). Verve, by contrast, had a quality hold on a Beta-sourced probiotic ingredient after an out-of-spec test reading; retesting was inconclusive rather than a confirmed contamination, and the batch was destroyed as a precaution rather than escalated to recall. The two brands' outcomes differ, and the difference plausibly relates to ingredient type (protein isolate vs. probiotic strain) or batch-specific factors rather than Beta's overall reliability.",
+    "expected_outcome": "Do not present a single clean verdict on Beta. Surface both records, note the conflicting outcomes, and recommend human review to assess whether the concern is ingredient-category-specific before making a portfolio-wide judgment on Beta. Mention the enhanced incoming QA check Verve added for this ingredient category as a relevant existing mitigation.",
+    "correct_behavior": "conflict_flag_human_review"
+  }
+]

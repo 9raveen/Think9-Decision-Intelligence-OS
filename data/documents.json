@@ -1,0 +1,226 @@
+[
+  {
+    "doc_id": "E01",
+    "type": "vendor_quote_summary",
+    "date": "2025-06-02",
+    "brand": "Nova",
+    "related_decision_id": "D01",
+    "content": "Quote comparison - moisturizer jars 250ml. Alpha: Rs 8.20/unit, MOQ 20K, lead time 18 days, payment 50/50. Coastal Pack Co: Rs 8.95/unit, MOQ 15K, lead time 26 days, payment net-30. Alpha also flexible on a smaller test run of 20K vs Coastal's minimum being similar. Going with Alpha given the cost delta at our volume."
+  },
+  {
+    "doc_id": "E02",
+    "type": "onboarding_note",
+    "date": "2025-06-18",
+    "brand": "Nova",
+    "related_decision_id": "D01",
+    "content": "Alpha onboarding call notes: confirmed spec sheet, sample approved by QA on first pass, PO cut for 40K units. No open items."
+  },
+  {
+    "doc_id": "E03",
+    "type": "delivery_tracker_export",
+    "date": "2025-09-01",
+    "brand": "Nova",
+    "related_decision_id": "D02",
+    "content": "PO-NV-1187 (Alpha, moisturizer jars, 40K units) - confirmed delivery window 22-24 Aug. Actual arrival 3 Sep. Delta: +12 days vs window close. Retail team flagged shelf gap risk for 2 SKUs in western region."
+  },
+  {
+    "doc_id": "E04",
+    "type": "internal_email_thread",
+    "date": "2025-09-03",
+    "brand": "Nova",
+    "related_decision_id": "D02",
+    "content": "Subject: Re: Alpha delay - jar PO. \"we're basically bare on the 150ml SKU in 4 stores as of this morning, retail ops is asking for an ETA we don't have yet. Escalating to Alpha's account mgr today.\" \"Alpha says it's a raw material shortage on their PET resin side, not specific to us. They're pushing the next batch priority.\""
+  },
+  {
+    "doc_id": "E05",
+    "type": "delivery_tracker_export",
+    "date": "2025-10-19",
+    "brand": "Nova",
+    "related_decision_id": "D03",
+    "content": "PO-NV-1244 (Alpha, moisturizer jars, 35K units) - confirmed window 28 Sep - 2 Oct. Actual arrival 20 Oct. Delta: +18 days. No proactive notice from Alpha prior to the window closing; team followed up after day 10 of silence."
+  },
+  {
+    "doc_id": "E06",
+    "type": "meeting_notes",
+    "date": "2025-10-22",
+    "brand": "Nova",
+    "related_decision_id": "D03",
+    "content": "Supply chain sync - Alpha issue #2. Second delay in 4 months, this one with zero heads-up which is worse than the first. Asked Alpha for a written remediation plan before we commit to Q1 volumes. Also quietly started pinging Coastal Pack Co to see where their lead times sit right now, just in case."
+  },
+  {
+    "doc_id": "E07",
+    "type": "vendor_response_email",
+    "date": "2025-11-10",
+    "brand": "Nova",
+    "related_decision_id": "D04",
+    "content": "From: Alpha Account Management. \"We've reviewed and would like to propose a dedicated production slot for Nova starting next cycle plus a secondary QC checkpoint. We can't formally commit to a guaranteed delivery window at this time given current resin supply volatility, but we expect meaningful improvement.\""
+  },
+  {
+    "doc_id": "E08",
+    "type": "legal_review_memo",
+    "date": "2025-11-28",
+    "brand": "Verve",
+    "related_decision_id": "D05",
+    "content": "Claim review - wellness drink relaunch. Marketing proposed \"clinically proven to boost immunity.\" No clinical trial on file for this formulation or an equivalent. Recommend against use of \"clinically proven\" absent trial data; suggest ingredient-based framing instead."
+  },
+  {
+    "doc_id": "E09",
+    "type": "packaging_copy_approval",
+    "date": "2025-12-04",
+    "brand": "Verve",
+    "related_decision_id": "D05",
+    "content": "Final approved front-of-pack copy: \"Formulated with immunity-supporting ingredients - Vitamin C, Zinc, Elderberry.\" Sign-off: Legal, Brand, QA. Prior draft copy withdrawn."
+  },
+  {
+    "doc_id": "E10",
+    "type": "launch_plan_deck_excerpt",
+    "date": "2026-01-08",
+    "brand": "Lumen",
+    "related_decision_id": "D06",
+    "content": "Diffuser line GTM options. Option A (digital-only, influencer-led): lowest cost, fastest to market, targets existing DTC list + lookalike audiences. Option B (hybrid): adds 2 retail partners, +6 weeks to launch, listing fees ~4L. Option C (retail-first): slowest, highest upfront cost. Recommendation: Option A for phase 1, revisit channel mix at 90-day mark based on performance."
+  },
+  {
+    "doc_id": "E11",
+    "type": "internal_slack_export",
+    "date": "2026-01-09",
+    "brand": "Lumen",
+    "related_decision_id": "D06",
+    "content": "\"honestly retail listing lead times would blow our Feb launch window, going digital-only for v1 makes sense given where the audience already is for us\" \"agreed, we can always add retail later if it does well\""
+  },
+  {
+    "doc_id": "E12",
+    "type": "performance_dashboard_export",
+    "date": "2026-05-01",
+    "brand": "Lumen",
+    "related_decision_id": "D07",
+    "content": "Diffuser line - 90 day snapshot. Forecast units (90d): 18,000. Actual: 12,240 (68% of forecast). 60-day actual: 8,540 (61% of forecast at that point). Reorder rate: 22% vs 35% projected. Awareness survey (digital-savvy segment): 41% aided recall. Awareness survey (general segment, same DMAs): 6% aided recall."
+  },
+  {
+    "doc_id": "E13",
+    "type": "retrospective_notes",
+    "date": "2026-05-08",
+    "brand": "Lumen",
+    "related_decision_id": "D07",
+    "content": "Post-launch retro. Strong performance within our existing DTC/influencer-reachable audience, but essentially invisible outside it - the general awareness number is the tell. Reorder lag also seems tied to lack of physical trial; people aren't discovering the scent line without touching/smelling it first, which digital can't really replicate for this category. Adding retail for Q3, keeping digital as lead channel. Worth remembering for future launches in this category: digital-only works for reach into people who already know us, not for broad discovery of a low-familiarity scent product."
+  },
+  {
+    "doc_id": "E14",
+    "type": "delivery_tracker_export",
+    "date": "2026-04-01",
+    "brand": "Kindle",
+    "related_decision_id": "D08",
+    "content": "Alpha flexible packaging line (foil pouches) - 3 cycles logged for Kindle snack SKUs, all within confirmed delivery windows, no escalations."
+  },
+  {
+    "doc_id": "E15",
+    "type": "vendor_quality_certification",
+    "date": "2025-10-28",
+    "brand": "Kindle",
+    "related_decision_id": "D09",
+    "content": "Supplier Beta - whey protein isolate, grade WPI-90. Third-party quality certification on file, batch testing protocol documented. Pricing tier confirmed for Kindle's forecast volume."
+  },
+  {
+    "doc_id": "E16",
+    "type": "delivery_tracker_export",
+    "date": "2026-03-01",
+    "brand": "Kindle",
+    "related_decision_id": "D09",
+    "content": "Beta ingredient deliveries - 4 cycles logged since Nov 2025, all on schedule, no QA holds."
+  },
+  {
+    "doc_id": "E17",
+    "type": "qa_incident_report",
+    "date": "2026-04-16",
+    "brand": "Verve",
+    "related_decision_id": "D10",
+    "content": "QA hold placed on Batch VW-2204 (wellness drink, probiotic component sourced from Beta) pending investigation. Trigger: routine incoming test flagged an out-of-spec reading on one of three probiotic strain markers. Retesting initiated on a representative sample set."
+  },
+  {
+    "doc_id": "E18",
+    "type": "qa_followup_memo",
+    "date": "2026-04-25",
+    "brand": "Verve",
+    "related_decision_id": "D10",
+    "content": "Retest results: 2 of 3 sample sets within spec, 1 borderline but inconclusive due to a lab equipment calibration issue mid-test. Cannot fully rule out an isolated batch anomaly. Decision: destroy affected batch as precaution rather than release; not escalating to a full recall since no downstream product had shipped. Adding a second incoming QA check specifically for this ingredient category going forward, applies to Beta sourcing broadly not just this SKU."
+  },
+  {
+    "doc_id": "E19",
+    "type": "capacity_planning_note",
+    "date": "2026-01-20",
+    "brand": "Nova",
+    "related_decision_id": "D11",
+    "content": "Gamma flagged their existing line is booked through the holiday window for other clients. Asked whether a secondary line is feasible - they confirmed yes with 2 weeks' notice, facility has spare floor space. Cheaper than onboarding a new co-packer cold."
+  },
+  {
+    "doc_id": "E20",
+    "type": "contract_renewal_notes",
+    "date": "2026-03-08",
+    "brand": "Aura",
+    "related_decision_id": "D12",
+    "content": "Gamma renewal - they proposed raising our MOQ commitment by 30%, citing facility utilization targets. Our SKU velocity doesn't support that without sitting on excess inventory. Countered with a lower MOQ at a slightly higher per-unit rate, they accepted."
+  },
+  {
+    "doc_id": "E21",
+    "type": "pricing_negotiation_email",
+    "date": "2026-01-30",
+    "brand": "Aura",
+    "related_decision_id": "D13",
+    "content": "Beta confirmed a 6% discount tier if we combine forecasted volume across the two SKUs sharing this ingredient rather than ordering separately. No change to lead time or QA terms."
+  },
+  {
+    "doc_id": "E22",
+    "type": "vendor_quote_summary",
+    "date": "2025-08-10",
+    "brand": "Verve",
+    "related_decision_id": "D14",
+    "content": "Glass bottle sourcing - cold-pressed juice line. Alpha's glass division (separate from their PET operation) came in competitively, cited prior work with two other premium beverage brands. Incumbent vendor's pricing was close but lead time was longer."
+  },
+  {
+    "doc_id": "E23",
+    "type": "lab_verification_report",
+    "date": "2026-03-18",
+    "brand": "Kindle",
+    "related_decision_id": "D15",
+    "content": "Protein content verification - snack bar SKU. Lab result: 21g protein per 100g, meets regulatory threshold for \"high in protein\" designation. Certificate attached to claim approval file."
+  },
+  {
+    "doc_id": "E24",
+    "type": "sell_through_report",
+    "date": "2025-10-15",
+    "brand": "Nova",
+    "related_decision_id": "D16",
+    "content": "Regional retail expansion - Q1 post-expansion sell-through at 104% of forecast across the 2 new chains, in line with existing-market performance."
+  },
+  {
+    "doc_id": "E25",
+    "type": "vendor_quote_summary",
+    "date": "2025-05-02",
+    "brand": "Lumen",
+    "related_decision_id": "D17",
+    "content": "Glass jar sourcing - candle line. Alpha offered a mold customization option within our timeline that the incumbent vendor couldn't match without an 8-week delay."
+  },
+  {
+    "doc_id": "E26",
+    "type": "onboarding_status_note",
+    "date": "2026-03-28",
+    "brand": "Kindle",
+    "related_decision_id": "D18",
+    "content": "Gamma co-packing ramp for new snack format running 9 days behind the agreed schedule. Gamma says it's specific to standing up the new production line for this format, not a resourcing issue on their end generally. No prior hiccups with Gamma for our existing SKUs."
+  },
+  {
+    "doc_id": "E27",
+    "type": "general_playbook_excerpt",
+    "date": "2025-04-01",
+    "brand": null,
+    "related_decision_id": null,
+    "content": "Think9 Supplier Onboarding Playbook (v3) - excerpt. All new packaging and ingredient suppliers require a signed SLA covering lead time commitments, MOQ, and a defined escalation path for delivery variance beyond 5 business days. Brands are encouraged to check with procurement leads at other Think9 brands before finalizing a new supplier relationship where prior history may exist."
+  },
+  {
+    "doc_id": "E28",
+    "type": "general_playbook_excerpt",
+    "date": "2025-04-01",
+    "brand": null,
+    "related_decision_id": null,
+    "content": "Think9 Brand Claims Playbook (v2) - excerpt. Any claim using terms such as \"clinically proven,\" \"doctor recommended,\" or \"scientifically proven\" requires documented substantiation on file prior to legal sign-off. Ingredient-benefit framing (e.g. \"formulated with X\") does not require the same substantiation standard but must not imply an unproven outcome."
+  }
+]
