@@ -48,9 +48,7 @@ class QdrantDocumentStore:
             self._client.delete_collection(COLLECTION_NAME)
         self._client.create_collection(
             collection_name=COLLECTION_NAME,
-            vectors_config=qmodels.VectorParams(
-                size=vectors.shape[1], distance=qmodels.Distance.COSINE
-            ),
+            vectors_config=qmodels.VectorParams(size=vectors.shape[1], distance=qmodels.Distance.COSINE),
         )
 
         points = []
@@ -64,39 +62,25 @@ class QdrantDocumentStore:
                 "date": doc.date.isoformat(),
                 "brand": doc.brand,
                 "related_decision_id": doc.related_decision_id,
-                # joined from the linked Decision, if any
                 "function": linked_decision.function if linked_decision else None,
                 "supplier": linked_decision.supplier_tags() if linked_decision else [],
                 "product_line": linked_decision.product_line if linked_decision else None,
                 "category": linked_decision.product_or_category if linked_decision else None,
                 "tags": linked_decision.tags if linked_decision else [],
             }
-            points.append(
-                qmodels.PointStruct(id=point_id, vector=vec.tolist(), payload=payload)
-            )
+            points.append(qmodels.PointStruct(id=point_id, vector=vec.tolist(), payload=payload))
 
         self._client.upsert(collection_name=COLLECTION_NAME, points=points)
 
     def search(self, query_text: str, top_k: int = 5) -> list[ScoredDocument]:
         query_vec = self._embedder.transform([query_text])[0]
-        response = self._client.query_points(
-            collection_name=COLLECTION_NAME,
-            query=query_vec.tolist(),
-            limit=top_k,
-        )
-        return [
-            ScoredDocument(document=self._id_to_document[hit.id], score=float(hit.score))
-            for hit in response.points
-        ]
+        response = self._client.query_points(collection_name=COLLECTION_NAME, query=query_vec.tolist(), limit=top_k)
+        return [ScoredDocument(document=self._id_to_document[hit.id], score=float(hit.score)) for hit in response.points]
 
     def get_payload(self, doc_id: str) -> Optional[dict]:
-        """Helper for metadata-preservation tests — fetch the stored
-        payload for a given doc_id."""
         records, _ = self._client.scroll(
             collection_name=COLLECTION_NAME,
-            scroll_filter=qmodels.Filter(
-                must=[qmodels.FieldCondition(key="doc_id", match=qmodels.MatchValue(value=doc_id))]
-            ),
+            scroll_filter=qmodels.Filter(must=[qmodels.FieldCondition(key="doc_id", match=qmodels.MatchValue(value=doc_id))]),
             limit=1,
         )
         return records[0].payload if records else None

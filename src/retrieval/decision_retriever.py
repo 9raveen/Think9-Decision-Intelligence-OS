@@ -47,7 +47,6 @@ class DecisionRetriever:
         after: date | None = None,
         before: date | None = None,
     ) -> list[Decision]:
-        """Explicit structured filtering — no semantic ranking involved."""
         results = self._decisions
         if brand:
             results = [d for d in results if d.brand.lower() == brand.lower()]
@@ -76,3 +75,4 @@ class DecisionRetriever:
             ScoredDecision(decision=self._decisions[i], score=float(scores[i]))
             for i in ranked_idx
         ]
+    

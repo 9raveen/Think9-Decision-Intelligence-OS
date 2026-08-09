@@ -42,3 +42,4 @@ class DocumentVectorStore:
             ScoredDocument(document=self._documents[i], score=float(scores[i]))
             for i in ranked_idx
         ]
+    

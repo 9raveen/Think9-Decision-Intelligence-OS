@@ -1,13 +1,6 @@
 """Combines Path A (structured decision retrieval) and Path B (document
-vector search) into a single evidence bundle for a query.
-
-IMPORTANT ARCHITECTURAL BOUNDARY: this module returns *evidence* —
-ranked decisions and documents with scores. It does not decide whether
-that evidence constitutes a "relevant precedent," does not flag
-conflicts, and does not generate an answer. That reasoning belongs to
-the Cross-Brand Intelligence Agent (a later phase, not yet built). No
-LLM calls happen here.
-"""
+vector search) into a single evidence bundle for a query. Returns
+evidence only — no LLM reasoning, no precedent verdict."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -21,8 +14,6 @@ class EvidenceBundle:
     query_text: str
     matched_decisions: list[ScoredDecision]
     matched_documents: list[ScoredDocument]
-    # documents pulled in because they're evidence_doc_ids of a matched
-    # decision, even if they didn't independently score highly
     linked_documents: list[ScoredDocument] = field(default_factory=list)
 
     def decision_ids(self, min_score: float = 0.0) -> list[str]:
@@ -37,27 +28,15 @@ class EvidenceBundle:
 
 
 class HybridRetriever:
-    def __init__(
-        self,
-        decision_retriever: DecisionRetriever,
-        document_store: DocumentVectorStore,
-    ) -> None:
+    def __init__(self, decision_retriever: DecisionRetriever, document_store: DocumentVectorStore) -> None:
         self._decision_retriever = decision_retriever
         self._document_store = document_store
         self._doc_by_id = {d.doc_id: d for d in document_store._documents}
 
-    def retrieve(
-        self,
-        query_text: str,
-        decision_top_k: int = 6,
-        document_top_k: int = 6,
-    ) -> EvidenceBundle:
+    def retrieve(self, query_text: str, decision_top_k: int = 6, document_top_k: int = 6) -> EvidenceBundle:
         matched_decisions = self._decision_retriever.semantic_search(query_text, top_k=decision_top_k)
         matched_documents = self._document_store.search(query_text, top_k=document_top_k)
 
-        # Pull in documents explicitly linked as evidence to top-scoring
-        # decisions, so evidence isn't lost just because a document's own
-        # text scored lower than the top_k cutoff.
         linked_ids: set[str] = set()
         for sd in matched_decisions:
             linked_ids.update(sd.decision.evidence_doc_ids)
