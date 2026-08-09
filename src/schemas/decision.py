@@ -32,7 +32,6 @@ class Decision(BaseModel):
     outcome: str
     tags: list[str] = Field(default_factory=list)
 
-    # Fields added in the schema-enrichment fix
     product_or_category: str
     scope: Scope
     review_required: bool
@@ -40,9 +39,6 @@ class Decision(BaseModel):
     preceding_decision_id: Optional[str] = None
 
     def searchable_text(self) -> str:
-        """Concatenated text used for semantic matching. Deliberately
-        excludes decision_id/tags so scoring reflects narrative content,
-        not identifiers."""
         return " ".join(
             [
                 self.problem,
