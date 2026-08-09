@@ -34,7 +34,6 @@ def validate_corpus(
     decision_ids = {d.decision_id for d in decisions}
     doc_ids = {d.doc_id for d in documents}
 
-    # Decisions -> documents
     for d in decisions:
         for eid in d.evidence_doc_ids:
             if eid not in doc_ids:
@@ -45,12 +44,10 @@ def validate_corpus(
                 f"{d.preceding_decision_id}"
             )
 
-    # Documents -> decisions
     for doc in documents:
         if doc.related_decision_id and doc.related_decision_id not in decision_ids:
             report.add(f"{doc.doc_id} references missing decision {doc.related_decision_id}")
 
-    # Evaluation queries -> decisions/documents
     for q in queries:
         for did in q.expected_precedent_decision_ids + q.expected_context_decision_ids:
             if did not in decision_ids:
@@ -59,7 +56,6 @@ def validate_corpus(
             if eid not in doc_ids:
                 report.add(f"{q.query_id} references missing document {eid}")
 
-    # Chronological sanity: preceding_decision_id must actually precede in date
     by_id = {d.decision_id: d for d in decisions}
     for d in decisions:
         if d.preceding_decision_id:

@@ -37,7 +37,6 @@ class SemanticEmbedder:
         self._fitted = False
 
     def fit(self, texts: list[str]) -> None:
-        # n_components must be < min(n_samples, n_features); clamp for small corpora
         n_components = min(self._n_components, len(texts) - 1)
         tfidf = TfidfVectorizer(stop_words="english", ngram_range=(1, 2))
         svd = TruncatedSVD(n_components=n_components, random_state=42)

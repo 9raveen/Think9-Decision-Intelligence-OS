@@ -32,8 +32,6 @@ class TextEmbedder:
         return self._vectorizer.transform(texts).toarray()
 
     def similarity(self, query_vec: np.ndarray, corpus_vecs: np.ndarray) -> np.ndarray:
-        """Cosine similarity of a single query vector against a matrix
-        of corpus vectors. Returns a 1D array of scores."""
         if query_vec.ndim == 1:
             query_vec = query_vec.reshape(1, -1)
         return cosine_similarity(query_vec, corpus_vecs)[0]
