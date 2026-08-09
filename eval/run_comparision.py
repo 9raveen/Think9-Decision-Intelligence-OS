@@ -24,8 +24,7 @@ from src.retrieval.qdrant_store import QdrantDocumentStore
 from src.retrieval.vector_store import DocumentVectorStore
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-RELEVANCE_THRESHOLD = 0.12  # unchanged from run_eval.py — same threshold used
-                            # for both pipelines so the comparison is fair
+RELEVANCE_THRESHOLD = 0.12
 K = 6
 
 
