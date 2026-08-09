@@ -48,3 +48,4 @@ def evaluate(relevant_decisions: list[Decision], has_conflict: bool) -> Governan
             seen.append(r)
 
     return GovernanceResult(review_required=bool(seen), reasons=seen)
+
