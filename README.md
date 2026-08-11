@@ -71,7 +71,7 @@ flowchart TD
 - **LLM:** Groq (`llama-3.3-70b-versatile`) — free tier, OpenAI-compatible
 - **Retrieval:** TF-IDF (scikit-learn) + semantic embeddings via Qdrant, compared head-to-head in eval
 - **UI:** Streamlit (multipage — Ask Think9 + Decision Explorer)
-- **Testing:** pytest (21 tests) + custom eval harness against 7 labeled queries
+- **Testing:** pytest (21 tests) + three-layer eval harness against 7 labeled queries
 
 ---
 
@@ -115,9 +115,9 @@ Think9-Decision_IntelligenceOS/
 │   ├── documents.json
 │   └── evaluation_queries.json
 ├── eval/
-│   ├── run_agent_eval.py
-│   ├── run_comparision.py
-│   ├── run_eval.py
+│   ├── run_agent_eval.py           # Full pipeline: agent behavior vs. ground truth
+│   ├── run_eval.py                 # Retrieval-only: recall@6, false-positive rate
+│   ├── run_comparision.py          # TF-IDF vs. semantic retrieval, head-to-head
 │   └── metrics.py
 ├── tests/
 │   ├── test_governance.py
@@ -148,7 +148,7 @@ copy .env.example .env
 # edit .env → GROQ_API_KEY=gsk_...
 
 python -m pytest tests/ -v      # confirm 21 passed
-streamlit run app/streamlit_app.py
+streamlit run apps/streamlit_app.py
 ```
 
 Open `http://localhost:8501`. Use the sidebar to switch between **Ask Think9** and **Decision Explorer**.
@@ -163,12 +163,6 @@ Open `http://localhost:8501`. Use the sidebar to switch between **Ask Think9** a
 
 ---
 
-## What's Real MVP vs. Roadmap
-
-This is a working prototype on a **synthetic corpus** (18 decisions, 28 documents, 5 fictional brands) built to demonstrate the architecture and reasoning pattern. See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) and [`docs/30-day-roadmap.md`](docs/30-day-roadmap.md) for exactly what's production-real today versus what a real deployment across Think9's actual 30+ brand data would require.
-
----
-
 ## Evaluation
 
 Three eval layers, run against 7 labeled ground-truth queries (`data/evaluation_queries.json`) spanning clear precedent, conflicting precedent, and no-precedent cases:
@@ -180,6 +174,14 @@ python eval/run_comparision.py  # TF-IDF vs. semantic (Qdrant) retrieval, head-t
 ```
 
 `run_agent_eval.py` reports end-to-end agreement between the pipeline's classified behavior (precedent found / conflict / no precedent) and the approved ground truth. `run_eval.py` and `run_comparision.py` isolate retrieval quality specifically, so retrieval errors and reasoning errors can be diagnosed separately rather than conflated into one pass/fail number.
+
+Full results and findings (including the TF-IDF vs. semantic comparison) are written up in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+
+---
+
+## What's Real MVP vs. Roadmap
+
+This is a working prototype on a **synthetic corpus** (18 decisions, 28 documents, 5 fictional brands) built to demonstrate the architecture and reasoning pattern. See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) and [`docs/30-day-roadmap.md`](docs/30-day-roadmap.md) for exactly what's production-real today versus what a real deployment across Think9's actual 30+ brand data would require.
 
 ---
 
