@@ -179,6 +179,8 @@ python eval/run_eval.py         # retrieval-only: recall@6, false-positive rate 
 python eval/run_comparision.py  # TF-IDF vs. semantic (Qdrant) retrieval, head-to-head
 ```
 
-## `run_agent_eval.py` reports end-to-end agreement between the pipeline's classified behavior (precedent found / conflict / no precedent) and the approved ground truth. `run_eval.py` and `run_comparision.py` isolate retrieval quality specifically, so retrieval errors and reasoning errors can be diagnosed separately rather than conflated into one pass/fail number.
+`run_agent_eval.py` reports end-to-end agreement between the pipeline's classified behavior (precedent found / conflict / no precedent) and the approved ground truth. `run_eval.py` and `run_comparision.py` isolate retrieval quality specifically, so retrieval errors and reasoning errors can be diagnosed separately rather than conflated into one pass/fail number.
+
+---
 
 Built for the Think9 Consumer AI & Data Science Intern take-home challenge.
