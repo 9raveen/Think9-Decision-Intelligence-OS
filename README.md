@@ -155,6 +155,8 @@ Open `http://localhost:8501`. Use the sidebar to switch between **Ask Think9** a
 
 ---
 
+**Corpus key:** fictional brands — Nova, Aura, Verve, Kindle, Lumen. Fictional suppliers — Alpha, Beta, Gamma.
+
 ## Example Queries
 
 - _"We're evaluating Supplier Alpha for packaging on a new sunscreen SKU. What should we know?"_ — cross-brand precedent

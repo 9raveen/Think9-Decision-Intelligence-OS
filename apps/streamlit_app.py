@@ -36,7 +36,9 @@ with col2:
     )
 
 st.info(
-    "MVP prototype on a synthetic corpus (18 decisions, 28 supporting documents "
-    "across 5 fictional brands). See README and ARCHITECTURE.md for what's real "
-    "MVP vs. roadmap."
+    "This is an MVP prototype built on a synthetic corpus (18 decisions, "
+    "28 supporting documents) — a stand-in for Think9's real 30+ brand scale. "
+    "**Fictional brands:** Nova, Aura, Verve, Kindle, Lumen. "
+    "**Fictional suppliers:** Alpha, Beta, Gamma. "
+    "See the repository README and ARCHITECTURE.md for what's real MVP vs. roadmap."
 )
