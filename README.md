@@ -41,12 +41,19 @@ A centralized decision archive + agentic reasoning pipeline that:
 ```mermaid
 flowchart TD
     A[User Query] --> B[Router - deterministic]
-    B --> C[Hybrid Retrieval - deterministic, TF-IDF]
-    C --> D[Evidence Bundle]
+    B --> C[Hybrid Retrieval - deterministic]
+    C --> C1[TF-IDF]
+    C --> C2[LSA / Qdrant]
+    C1 --> D[Evidence Bundle]
+    C2 --> D
     D --> E[Cross-Brand Intelligence - deterministic]
-    E --> F[Governance - deterministic]
-    F --> G[Synthesis - LLM, grounded in cited evidence]
-    G --> H[Final Answer + Cited Decisions/Documents]
+    E -->|precedent found| F[Synthesis - LLM]
+    E -->|conflict detected| F
+    E -->|no precedent| F
+    F --> G[Governance - deterministic]
+    G -->|review triggered| H[Human Review Gate]
+    G -->|clear| I[Final Answer]
+    H --> I
 ```
 
 **Why deterministic components surround the LLM:** the LLM is used for language generation and nuanced synthesis, never for authoritative evidence selection or governance decisions. See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the full rationale.
