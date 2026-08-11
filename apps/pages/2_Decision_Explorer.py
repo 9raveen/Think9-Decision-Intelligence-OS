@@ -1,3 +1,4 @@
+import html
 import sys
 from pathlib import Path
 
@@ -22,7 +23,7 @@ view = st.radio("Browse by", ["Supplier", "Brand"], horizontal=True)
 
 sentiment_pill = {
     "positive": ("🟢 Positive track record", "t9-pill-green"),
-    "negative": ("🔴 Negative track record", "t9-pill-yellow"),  # reuse yellow (no red pill defined)
+    "negative": ("🔴 Negative track record", "t9-pill-yellow"),
     "mixed": ("🟡 Mixed track record", "t9-pill-yellow"),
 }
 
@@ -39,7 +40,7 @@ related = sorted(related, key=lambda d: d.date)
 
 col1, col2 = st.columns([2, 1])
 with col1:
-    st.markdown(f"### {selected}")
+    st.markdown(f"### {html.escape(selected)}")
 with col2:
     st.markdown(f'<p style="text-align:right;color:#9aa4b2;">{len(related)} related decisions</p>', unsafe_allow_html=True)
 
@@ -68,18 +69,18 @@ for d in related:
         badges.append("🌐 portfolio-relevant")
     if d.product_line:
         badges.append(f"📦 {d.product_line}")
-    badge_html = " · ".join(f'<span class="t9-badge">{b}</span>' for b in badges)
+    badge_html = " · ".join(f'<span class="t9-badge">{html.escape(b)}</span>' for b in badges)
 
     with st.expander(f"{d.decision_id} — {d.brand} ({d.function}) — {d.date}"):
         st.markdown(f'<span class="t9-pill {css_class}">{label}</span>', unsafe_allow_html=True)
         st.markdown(
             f"""
             <div class="t9-decision-card">
-              <p><b>Problem:</b> {d.problem}</p>
-              <p><b>Options considered:</b> {', '.join(d.options_considered)}</p>
-              <p><b>Decision made:</b> {d.decision_made}</p>
-              <p><b>Reason:</b> {d.reason}</p>
-              <p><b>Outcome:</b> {d.outcome}</p>
+              <p><b>Problem:</b> {html.escape(d.problem)}</p>
+              <p><b>Options considered:</b> {html.escape(', '.join(d.options_considered))}</p>
+              <p><b>Decision made:</b> {html.escape(d.decision_made)}</p>
+              <p><b>Reason:</b> {html.escape(d.reason)}</p>
+              <p><b>Outcome:</b> {html.escape(d.outcome)}</p>
               {badge_html}
             </div>
             """,
@@ -91,7 +92,7 @@ for d in related:
             for eid in d.evidence_doc_ids:
                 doc = doc_by_id.get(eid)
                 if doc:
-                    st.markdown(f"- *{doc.type}* ({doc.date}): {doc.content}")
+                    st.markdown(f"- *{html.escape(doc.type)}* ({doc.date}): {html.escape(doc.content)}")
 
 if not related:
     st.info("No decisions found for this selection.")

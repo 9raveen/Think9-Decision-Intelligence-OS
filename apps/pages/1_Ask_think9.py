@@ -1,3 +1,4 @@
+import html
 import sys
 from pathlib import Path
 
@@ -51,16 +52,18 @@ if st.button("Ask", type="primary") and query.strip():
     st.markdown("#### Answer")
 
     # Clean rendering: parse the bracketed fallback instead of dumping it raw.
+    # SECURITY: answer_text is LLM output influenced by user-supplied query
+    # text — it is escaped before being placed inside unsafe_allow_html
+    # markup, since it is never safe to trust as literal HTML.
     answer_text = synthesis.answer_text
     if not synthesis.used_llm and answer_text.startswith("[TEMPLATE FALLBACK"):
         st.markdown('<span class="t9-fallback-badge">⚠️ Template fallback — set GROQ_API_KEY for a generated answer</span>', unsafe_allow_html=True)
-        # Strip the bracket prefix and query echo, keep only the substantive part.
         body = answer_text.split("]", 1)[-1].strip()
         if "Query:" in body:
             body = body.split(".", 1)[-1].strip() if body.split(".", 1)[0].startswith("Query") else body
-        st.markdown(f'<div class="t9-answer-card">{body}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="t9-answer-card">{html.escape(body)}</div>', unsafe_allow_html=True)
     else:
-        st.markdown(f'<div class="t9-answer-card">{answer_text}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="t9-answer-card">{html.escape(answer_text)}</div>', unsafe_allow_html=True)
 
     if cross_brand.relevant_decisions:
         st.markdown("#### Supporting decisions")
@@ -68,11 +71,11 @@ if st.button("Ask", type="primary") and query.strip():
             st.markdown(
                 f"""
                 <div class="t9-decision-card">
-                  <span class="t9-decision-id">{d.decision_id}</span>
-                  <span class="t9-decision-meta"> — {d.brand} ({d.function}, {d.date})</span>
-                  <p><b>Problem:</b> {d.problem}</p>
-                  <p><b>Decision:</b> {d.decision_made}</p>
-                  <p><b>Outcome:</b> {d.outcome}</p>
+                  <span class="t9-decision-id">{html.escape(d.decision_id)}</span>
+                  <span class="t9-decision-meta"> — {html.escape(d.brand)} ({html.escape(d.function)}, {d.date})</span>
+                  <p><b>Problem:</b> {html.escape(d.problem)}</p>
+                  <p><b>Decision:</b> {html.escape(d.decision_made)}</p>
+                  <p><b>Outcome:</b> {html.escape(d.outcome)}</p>
                 </div>
                 """,
                 unsafe_allow_html=True,

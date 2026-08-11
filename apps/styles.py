@@ -31,6 +31,7 @@ def inject():
         .t9-answer-card {
             background: #161b26; border: 1px solid #2a3142; border-radius: 12px;
             padding: 1.2rem 1.4rem; margin: 0.6rem 0 1rem 0; line-height: 1.55;
+            word-wrap: break-word; overflow-wrap: break-word;
         }
         .t9-fallback-badge {
             display: inline-block; font-size: 0.75rem; color: #fbbf24;
@@ -42,6 +43,7 @@ def inject():
         .t9-decision-card {
             background: #161b26; border: 1px solid #2a3142; border-radius: 10px;
             padding: 0.9rem 1.1rem; margin-bottom: 0.7rem;
+            word-wrap: break-word; overflow-wrap: break-word;
         }
         .t9-decision-id { color: #60a5fa; font-weight: 700; font-size: 0.9rem; }
         .t9-decision-meta { color: #9aa4b2; font-size: 0.82rem; }
