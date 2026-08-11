@@ -6,20 +6,32 @@ everything upstream (retrieval, routing, conflict detection, governance)
 is deterministic on purpose, so an LLM failure/hallucination here can't
 corrupt what evidence was actually found.
 
-Uses Groq (free tier, no card required) — same OpenAI-compatible
-chat-completions shape. REQUIRES GROQ_API_KEY (see .env.example). Falls
-back to a labeled template when no key is set — no interface change
-needed either way. Get a free key at https://console.groq.com/
+Uses Groq (free tier, no card required) instead of the Anthropic API —
+same OpenAI-compatible chat-completions shape, swapped because a paid
+key wasn't available. REQUIRES GROQ_API_KEY (see .env.example). This
+sandbox has no key configured, so `synthesize()` cannot be end-to-end
+tested here against the real API. A `template_fallback()` is provided and
+used automatically when no key is present — it is NOT a substitute for
+real synthesis, just a clearly-labeled deterministic stand-in so the
+pipeline is runnable and testable offline. Swap requires no interface
+change on the caller side (get a free key at https://console.groq.com/).
+
+Design constraint carried over from earlier decisions in this project:
+no fabricated confidence percentages. The prompt explicitly instructs the
+model to cite which decision/document IDs support each claim instead of
+producing a numeric confidence score.
 """
 from __future__ import annotations
 
 import os
 from dataclasses import dataclass
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from src.agents.cross_brand_agent import CrossBrandResult
 from src.governance.rules import GovernanceResult
 from src.retrieval.hybrid_retriever import EvidenceBundle
-
 GROQ_MODEL = "llama-3.3-70b-versatile"
 
 SYSTEM_PROMPT = """You are the Think9 Decision Intelligence synthesis layer.
@@ -46,7 +58,9 @@ class SynthesisResult:
     used_llm: bool
 
 
-def _build_user_prompt(query_text, bundle, cross_brand, governance) -> str:
+def _build_user_prompt(
+    query_text: str, bundle: EvidenceBundle, cross_brand: CrossBrandResult, governance: GovernanceResult
+) -> str:
     lines = [f"Query: {query_text}", "", f"Cross-Brand Agent classification: {cross_brand.behavior}"]
     if cross_brand.relevant_decisions:
         lines.append("\nRelevant decisions:")
@@ -61,30 +75,44 @@ def _build_user_prompt(query_text, bundle, cross_brand, governance) -> str:
     return "\n".join(lines)
 
 
-def template_fallback(query_text, bundle, cross_brand, governance) -> str:
-    parts = [f"[TEMPLATE FALLBACK — no GROQ_API_KEY configured] Query: {query_text}"]
+def template_fallback(
+    query_text: str, bundle: EvidenceBundle, cross_brand: CrossBrandResult, governance: GovernanceResult
+) -> str:
+    """Deterministic, non-LLM answer used when no API key is configured.
+    Callers should indicate the fallback via SynthesisResult.used_llm
+    (e.g. a caption/badge in the UI) rather than relying on text markers
+    inside the answer itself — keeps this readable as a real answer."""
+    parts = []
+
     if cross_brand.behavior == "no_precedent_found":
         parts.append("No relevant precedent found in the decision archive for this query.")
     elif cross_brand.behavior == "conflict_flag_human_review":
+        pairs = ", ".join(f"{a} vs {b}" for a, b in cross_brand.conflicting_pairs)
         parts.append(
-            f"Conflicting precedent found across {cross_brand.conflicting_pairs}. "
-            "Outcomes differ across brands for related decisions — recommend human review "
-            "rather than a single verdict."
+            f"Conflicting precedent found ({pairs}). Outcomes differ across brands for "
+            "related decisions — recommend human review rather than a single verdict."
         )
     else:
         ids = ", ".join(d.decision_id for d in cross_brand.relevant_decisions)
         parts.append(f"Relevant precedent found: {ids}.")
+
     if governance.review_required:
         parts.append(f"Human review required: {'; '.join(governance.reasons)}")
+
     return "\n".join(parts)
 
 
-def synthesize(query_text: str, bundle: EvidenceBundle, cross_brand: CrossBrandResult, governance: GovernanceResult) -> SynthesisResult:
+def synthesize(
+    query_text: str, bundle: EvidenceBundle, cross_brand: CrossBrandResult, governance: GovernanceResult
+) -> SynthesisResult:
     api_key = os.environ.get("GROQ_API_KEY")
     if not api_key:
-        return SynthesisResult(answer_text=template_fallback(query_text, bundle, cross_brand, governance), used_llm=False)
+        return SynthesisResult(
+            answer_text=template_fallback(query_text, bundle, cross_brand, governance),
+            used_llm=False,
+        )
 
-    from groq import Groq
+    from groq import Groq  # imported lazily so the module loads fine without the package/key
 
     client = Groq(api_key=api_key)
     user_prompt = _build_user_prompt(query_text, bundle, cross_brand, governance)
