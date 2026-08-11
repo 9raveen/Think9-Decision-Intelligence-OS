@@ -1,35 +1,42 @@
 import streamlit as st
+from styles import inject
 
 st.set_page_config(page_title="Think9 Decision Intelligence OS", page_icon="🧠", layout="wide")
-
-st.title("🧠 Think9 Decision Intelligence OS")
-st.markdown("### *Has Think9 already learned this somewhere else?*")
+inject()
 
 st.markdown(
     """
-A centralized decision-intelligence layer for a 30+ brand consumer portfolio —
-structured decision memory and cross-brand precedent discovery, not a
-per-brand document chatbot.
-
-**Use the sidebar to navigate:**
-
-- **Ask Think9** — ask a question, get an evidence-backed answer with
-  cross-brand precedent, conflict flags, and a human-review gate where relevant.
-- **Decision Explorer** — browse suppliers or brands to see their decision
-  history directly, without asking a question first.
-
----
-
-**How this differs from a document chatbot:** answers are grounded in
-structured decision records (not just retrieved text), cross-brand
-precedent is surfaced explicitly, conflicting outcomes across brands are
-flagged for human review rather than resolved into a single false-confident
-verdict, and nothing is answered with a fabricated confidence percentage.
-"""
+    <div class="t9-hero">
+      <h1>🧠 Think9 Decision Intelligence OS</h1>
+      <p><i>Has Think9 already learned this somewhere else?</i></p>
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
 
+col1, col2 = st.columns([3, 2])
+with col1:
+    st.markdown("#### What this is")
+    st.write(
+        "A centralized decision-intelligence layer for a 30+ brand consumer "
+        "portfolio — structured decision memory and cross-brand precedent "
+        "discovery, not a per-brand document chatbot."
+    )
+    st.markdown("#### Navigate")
+    st.write("**💬 Ask Think9** — ask a question, get an evidence-backed answer with cross-brand precedent, conflict flags, and a human-review gate where relevant.")
+    st.write("**🔍 Decision Explorer** — browse suppliers or brands to see their decision history directly, without asking a question first.")
+
+with col2:
+    st.markdown("#### Why not just a chatbot")
+    st.markdown(
+        "- Answers grounded in **structured decision records**, not raw retrieved text\n"
+        "- Cross-brand precedent surfaced **explicitly**\n"
+        "- Conflicting outcomes **flagged for human review**, never silently resolved\n"
+        "- No fabricated confidence percentages"
+    )
+
 st.info(
-    "This is an MVP prototype built on a synthetic corpus (18 decisions, "
-    "28 supporting documents across 5 fictional brands). See the repository "
-    "README and ARCHITECTURE.md for what's real MVP vs. roadmap."
+    "MVP prototype on a synthetic corpus (18 decisions, 28 supporting documents "
+    "across 5 fictional brands). See README and ARCHITECTURE.md for what's real "
+    "MVP vs. roadmap."
 )
