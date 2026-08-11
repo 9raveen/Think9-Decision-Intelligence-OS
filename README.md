@@ -171,12 +171,14 @@ This is a working prototype on a **synthetic corpus** (18 decisions, 28 document
 
 ## Evaluation
 
-Ran against 7 labeled queries spanning clear precedent, conflicting precedent, and no-precedent cases, comparing TF-IDF vs. semantic retrieval. See eval results and findings in `docs/ARCHITECTURE.md`.
+Three eval layers, run against 7 labeled ground-truth queries (`data/evaluation_queries.json`) spanning clear precedent, conflicting precedent, and no-precedent cases:
 
 ```bash
-python eval/run_agent_eval.py
+python eval/run_agent_eval.py   # full pipeline: agent behavior vs. ground truth
+python eval/run_eval.py         # retrieval-only: recall@6, false-positive rate (TF-IDF)
+python eval/run_comparision.py  # TF-IDF vs. semantic (Qdrant) retrieval, head-to-head
 ```
 
----
+## `run_agent_eval.py` reports end-to-end agreement between the pipeline's classified behavior (precedent found / conflict / no precedent) and the approved ground truth. `run_eval.py` and `run_comparision.py` isolate retrieval quality specifically, so retrieval errors and reasoning errors can be diagnosed separately rather than conflated into one pass/fail number.
 
 Built for the Think9 Consumer AI & Data Science Intern take-home challenge.
