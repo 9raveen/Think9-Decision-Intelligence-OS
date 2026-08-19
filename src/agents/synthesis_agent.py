@@ -39,7 +39,7 @@ from src.agents.cross_brand_agent import CrossBrandResult
 from src.governance.rules import GovernanceResult
 from src.retrieval.hybrid_retriever import EvidenceBundle
 
-GROQ_MODEL = "llama-3.3-70b-versatile"
+GROQ_MODEL = "openai/gpt-oss-120b"
 
 SYSTEM_PROMPT = """You are the Think9 Decision Intelligence synthesis layer.
 Given a query and evidence retrieved from Think9's decision archive, answer
