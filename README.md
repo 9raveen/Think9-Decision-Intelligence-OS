@@ -63,7 +63,7 @@ flowchart TD
 ## Tech Stack
 
 - **Orchestration:** LangGraph — `retrieve → route → cross_brand → governance → synthesize`
-- **LLM:** Groq (`llama-3.3-70b-versatile`) — free tier, OpenAI-compatible. Synthesis is explicitly grounded: the prompt includes actual retrieved decision and document content, and the model is instructed never to cite an ID it wasn't given.
+- **LLM:** Groq (`llama-3.3-70b-versatile → openai/gpt-oss-120b`) — free tier, OpenAI-compatible. Synthesis is explicitly grounded: the prompt includes actual retrieved decision and document content, and the model is instructed never to cite an ID it wasn't given.
 - **Retrieval:** TF-IDF (scikit-learn) is the production default in the deployed app. An LSA-based retriever (TF-IDF → Truncated SVD, stored in Qdrant embedded mode) is implemented and benchmarked head-to-head in eval — **not** a transformer embedding (this sandbox's network blocks huggingface.co) — and was deliberately not made the production default because it produced more false positives on no-precedent queries. See `src/ingestion/semantic_embed.py` and the Evaluation section below.
 - **UI:** Streamlit (multipage — Ask Think9 + Decision Explorer), with LLM/user-influenced output HTML-escaped before rendering.
 - **Testing:** pytest, 21 tests, all passing — schemas, retrieval (TF-IDF + LSA), governance (all 3 trigger rules).

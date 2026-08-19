@@ -39,13 +39,13 @@ flowchart TD
 
 Actual `LangGraph` node order (`src/graph/pipeline.py`): `retrieve → route → cross_brand → governance → synthesize`. Governance runs _before_ synthesis, not after — its output (review-required flag and reasons) is passed into the synthesis prompt so the model's answer can reflect the review requirement directly, rather than governance being a post-hoc filter on LLM output.
 
-| Stage                    | Type                                  | Responsibility                                                                                           |
-| ------------------------ | ------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Router                   | Deterministic                         | Classifies retrieved decisions' function for display/context — not a retrieval filter (known limitation) |
-| Hybrid Retriever         | Deterministic                         | TF-IDF (production) / LSA (benchmarked) over decisions + documents                                       |
-| Cross-Brand Intelligence | Deterministic                         | Classifies precedent as clear / conflicting / absent across brands                                       |
-| Governance               | Deterministic                         | Flags human review; runs before synthesis so its output informs the answer                               |
-| Synthesis                | LLM (Groq, `llama-3.3-70b-versatile`) | Generates grounded final answer, citing only decision/document IDs it was actually given                 |
+| Stage                    | Type                                                        | Responsibility                                                                                           |
+| ------------------------ | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Router                   | Deterministic                                               | Classifies retrieved decisions' function for display/context — not a retrieval filter (known limitation) |
+| Hybrid Retriever         | Deterministic                                               | TF-IDF (production) / LSA (benchmarked) over decisions + documents                                       |
+| Cross-Brand Intelligence | Deterministic                                               | Classifies precedent as clear / conflicting / absent across brands                                       |
+| Governance               | Deterministic                                               | Flags human review; runs before synthesis so its output informs the answer                               |
+| Synthesis                | LLM (Groq, `llama-3.3-70b-versatile → openai/gpt-oss-120b`) | Generates grounded final answer, citing only decision/document IDs it was actually given                 |
 
 ## Governance Rules
 
